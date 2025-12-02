@@ -1,14 +1,22 @@
 
-import { ToyList } from '../cmps/ToyList.jsx';
+import { ToyList } from '../cmps/ToyList.jsx'
+import { toyService } from '../services/toy.service.js'
+
+import { use, useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { loadToys } from '../store/actions/toy.actions.js'
+import { store } from '../store/store.js'
+
+
 
 
 export function ToyIndex() {
+    const toys = useSelector((storeState) => storeState.toyModule.toys)
 
-    const toys = [
-        { _id: 't101', name: 'Talking Doll', price: 123 },
-        { _id: 't102', name: 'Race Car', price: 85 },
-        { _id: 't103', name: 'Building Blocks', price: 45 }
-    ]
+    useEffect(() => {
+        loadToys()
+    }, [])
+
 
     return (
         <div>

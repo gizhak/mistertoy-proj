@@ -1,9 +1,9 @@
 
 
-export function ToyEdite() {
+export function ToyEdit() {
 
     return (
-        <div className="toy-edite">
+        <div className="toy-edit">
             <h1>Toy Edit Page</h1>
             <p>Edit your toy details here.</p>
         </div>

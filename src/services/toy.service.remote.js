@@ -2,9 +2,19 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { userService } from './user.service.js'
+import { httpService } from './http.service.js'
 
+// import Axios from 'axios'
+// const axios = Axios.create({
+//     withCredentials: true
+// })
+
+// const BASE_URL = '/api/toy/'
+// const BASE_URL = '//localhost:3030/api/toy/'
+
+
+const BASE_URL = 'toy/'
 const STORAGE_KEY = 'toyDB'
-
 _createToys()
 
 export const toyService = {
@@ -13,42 +23,29 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
-    getRandomToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getRandomToy
 }
 
 function query(filterBy = {}) {
-    return storageService.query(STORAGE_KEY)
-        .then(toys => {
-            if (!filterBy.txt) filterBy.txt = ''
-            // if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
-            // if (!filterBy.minSpeed) filterBy.minSpeed = -Infinity
-            const regExp = new RegExp(filterBy.txt, 'i')
-            return toys.filter(toy =>
-                regExp.test(toy.name)
-            )
-        })
+    return httpService.get(BASE_URL, filterBy)
 }
 
 function getById(toyId) {
-    return storageService.get(STORAGE_KEY, toyId)
+    return httpService.get(BASE_URL + toyId)
 }
-
 function remove(toyId) {
-    // return Promise.reject('Not now!')
-    return storageService.remove(STORAGE_KEY, toyId)
+    return httpService.delete(BASE_URL + toyId)
 }
-
 
 function save(toy) {
     if (toy._id) {
-        return storageService.put(STORAGE_KEY, toy)
+        return httpService.put(BASE_URL + toy._id, toy)
     } else {
-        // when switching to backend - remove the next line
-        toy.owner = userService.getLoggedinUser()
-        return storageService.post(STORAGE_KEY, toy)
+        return httpService.post(BASE_URL, toy)
     }
 }
+
 
 function getEmptyToy() {
     return {
@@ -61,15 +58,16 @@ function getEmptyToy() {
 
 function getRandomToy() {
     return {
-        name: 'Susita-' + (Date.now() % 1000),
+        name: 'toy-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(50, 200),
         labels: ['Doll', 'Battery Powered', 'Baby'],
         inStock: true
     }
 }
 
+
 function getDefaultFilter() {
-    return { txt: '' }
+    return { txt: '', maxPrice: '', inStock: '' }
 }
 
 function _createToys() {
@@ -86,7 +84,5 @@ function _createToys() {
     }
 }
 
-// TEST DATA
-// storageService.post(STORAGE_KEY, {name: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
 
 
