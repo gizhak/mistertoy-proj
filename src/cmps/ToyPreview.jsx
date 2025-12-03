@@ -6,7 +6,7 @@ export function ToyPreview({ toy }) {
         <article>
             <h4>{toy.name}</h4>
             <h1>🧸</h1>
-            <p>Price: <span>${toy.price.toLocaleString()}</span></p>
+            <p>Price: <span>${toy.price}</span></p>
             {toy.labels && toy.labels.length > 0 && (
                 <p>Labels: <span>{toy.labels.join(', ')}</span></p>
             )}

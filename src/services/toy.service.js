@@ -61,7 +61,7 @@ function getEmptyToy() {
 
 function getRandomToy() {
     return {
-        name: 'Susita-' + (Date.now() % 1000),
+        name: 'toy-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(50, 200),
         labels: ['Doll', 'Battery Powered', 'Baby'],
         inStock: true

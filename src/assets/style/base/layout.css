@@ -6,14 +6,23 @@
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1000px;
   padding: 1em;
   margin: auto;
 }
 
-footer {
+/* footer {
   background-color: var(--clr1);
   color: var(--clr1bg);
   padding: 1em;
   text-align: center;
+} */
+
+footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5em;
+  text-align: center;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
 }

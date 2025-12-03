@@ -19,9 +19,9 @@ export function ToyIndex() {
 
 
     return (
-        <div>
+        <section className="toy-index">
             <h1>Toy Index</h1>
             <ToyList toys={toys} />
-        </div>
+        </section>
     )
 }

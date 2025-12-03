@@ -1,4 +1,4 @@
-.toy-preview {
+/* .toy-preview {
     text-align: center;
     padding: 0.3em;
     display: flex;
@@ -12,4 +12,80 @@
 
 .toy-preview img {
     max-width: 100px;
+} */
+
+
+.toy-preview {
+    background: linear-gradient(135deg, #c3eddf 0%, #e9f7f3 100%);
+    padding: 1.5em;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.toy-preview:hover {
+    transform: translateY(-10px) rotateX(5deg);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.toy-preview h4 {
+    font-size: 1.4em;
+    margin: 0.5em 0;
+    color: var(--clr1);
+    text-transform: capitalize;
+}
+
+.toy-preview h1 {
+    font-size: 3em;
+    margin: 0.3em 0;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+.toy-preview .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--clr2);
+}
+
+.toy-preview .labels span {
+    display: inline-block;
+    background-color: var(--clr2bg);
+    padding: 0.3em 0.6em;
+    margin: 0.2em;
+    border-radius: 20px;
+    font-size: 0.85em;
+}
+
+.toy-preview .stock {
+    margin: 0.8em 0;
+    font-weight: bold;
+}
+
+.toy-preview .actions {
+    margin-top: 1em;
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+}
+
+.toy-preview .actions a {
+    text-decoration: none;
+}
+
+.toy-preview .actions button {
+    padding: 0.5em 1em;
+    background-color: var(--clr1);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.toy-preview .actions button:hover {
+    background-color: var(--clr2);
+    transform: scale(1.05);
 }
