@@ -3,8 +3,8 @@
 // const { Route, Routes } = ReactRouterDOM
 // const { Provider } = ReactRedux
 
-import './App.css'
-// import './assets/style/main.css'
+// import './App.css'
+import './assets/style/main.css'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import { AppHeader } from './cmps/AppHeader.jsx'
